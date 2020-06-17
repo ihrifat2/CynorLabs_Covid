@@ -1,6 +1,4 @@
-# ReXpress
-
-> Create MERN or Full stack apps with React and Express. Run your client and server with a single command. 
+# CynorLabs_Covid
 
 ## Quick Start
 
