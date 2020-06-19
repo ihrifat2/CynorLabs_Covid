@@ -38,6 +38,7 @@ export default class Headerbar extends React.Component {
         console.log('onSubmit', data);
         // Place code to post json data to server here
         post('/api/posts/', this.props.fromdata);
+        this.closePreview()
     }
 
     render() {
@@ -53,12 +54,11 @@ export default class Headerbar extends React.Component {
                         <div className="clearfix" style={{ margin: '10px', width: '70%' }}>
                             <h4 className="float-left">Preview</h4>
                             <button className="btn btn-primary float-right" style={{ marginRight: '10px' }} onClick={this.showPreview.bind(this)}>Preview Form</button>
-
                             {
-                            this.state.previewVisible &&
+                                this.state.previewVisible &&
                                 <div className={modalClass} role="dialog">
                                     <div className="modal-dialog" role="document">
-                                        <div className="modal-content">
+                                        <div className="modal-content"  style={{ padding: '30px' }}>
                                             <Row xs="1">
                                                 <Col className="mt-4">
                                                     <ReactFormGenerator
@@ -82,7 +82,6 @@ export default class Headerbar extends React.Component {
                                     </div>
                                 </div>
                             }
-
                         </div>
                     </Col>
                 </Row>
