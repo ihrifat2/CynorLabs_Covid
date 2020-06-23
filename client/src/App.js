@@ -5,6 +5,8 @@ import Doctor from './components/Doctor';
 import AppNavbar from './components/AppNavbar';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Form from './components/Form'
+import Dashboard from './components/Dashboard';
+import ModifyForm from './components/ModifyForm';
 
 function App() {
     return (
@@ -16,6 +18,8 @@ function App() {
                         <Route exact path='/' component={Doctor} />
                         <Route exact path='/manager' component={Manager} />
                         <Route exact path='/form/:id' component={Form} />
+                        <Route exact path='/dashboard' component={Dashboard} />
+                        <Route exact path='/edit/:id' component={ModifyForm} />
                     </Switch>
                 </div>
             </div>
