@@ -1,21 +1,56 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'
 import { Doughnut } from "react-chartjs-2";
+import moment from 'moment'
 
 function Monthly(props) {
+    const [loading, setloading] = useState(false)
+
+    const [userData, setUserData] = useState([])
+    useEffect(() => {
+        const getData = () => {
+            setloading(true)
+            fetch('/api/posts')
+                .then(res => res.json())
+                .then(res => {
+                    setloading(false)
+                    setUserData(res)
+                })
+        }
+        getData()
+    }, [])
+    
+    const totalDayName = []
+    const dailyNameReport = userData.filter(function (post) {
+        totalDayName.push(moment(post.date).format('MMMM'))
+    }).length
+
+    var sliceDupDay = [];
+    totalDayName.forEach(x=>{
+        sliceDupDay[x]=(sliceDupDay[x] || 0)+1 
+    });
+
+    const dailyDayCount = Object.keys(sliceDupDay)
+    const dailyDayName = Object.values(sliceDupDay)
     return (
         <div>
             <h1>Monthly</h1>
-            <Doughnut
-                data={{
-                    labels: [65, 59, 90, 81, 56, 55, 40],
-                    datasets: [{
-                        data: [60, 54, 79, 68, 69, 75, 20],
-                        label: 'Infected',
-                        borderColor: 'rgb(116, 28, 176, 1)',
-                        fill: true,
-                    }],
-                }}
-            />
+            {
+                loading ?
+                'Loading ...' :
+                <Doughnut
+                    data={{
+                        labels: dailyDayCount,
+                        datasets: [{
+                            data: dailyDayName,
+                            label: 'Monthly Report',
+                            borderColor: 'rgb(144, 153, 5)',
+                            hoverBackgroundColor: 'rgba(144, 153, 5, 0.4)',
+                            hoverBorderColor: 'rgba(144, 153, 5, 1)',
+                            fill: true,
+                        }],
+                    }}
+                />
+            }
         </div>
     );
 }
