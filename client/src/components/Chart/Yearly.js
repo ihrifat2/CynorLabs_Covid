@@ -1,42 +1,59 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'
 import { Bar } from "react-chartjs-2";
+import moment from 'moment'
 
 function Yearly(props) {
+    const [loading, setloading] = useState(false)
+
+    const [userData, setUserData] = useState([])
+    useEffect(() => {
+        const getData = () => {
+            setloading(true)
+            fetch('/api/posts')
+                .then(res => res.json())
+                .then(res => {
+                    setloading(false)
+                    setUserData(res)
+                })
+        }
+        getData()
+    }, [])
+    
+    const totalDayName = []
+    const dailyNameReport = userData.filter(function (post) {
+        totalDayName.push(moment(post.date).format('YYYY'))
+    }).length
+
+    var sliceDupDay = [];
+    totalDayName.forEach(x=>{
+        sliceDupDay[x]=(sliceDupDay[x] || 0)+1 
+    });
+
+    const dailyDayCount = Object.keys(sliceDupDay)
+    const dailyDayName = Object.values(sliceDupDay)
     return (
         <div>
             <h1>Yearly</h1>
-            <Bar
-                data={{
-                    labels: [65, 59, 90, 81, 56, 55],
-                    datasets: [{
-                        data: [60, 54, 79, 68, 69, 75],
-                        label: 'Infected',
-                        borderColor: 'rgb(116, 28, 176, 1)',
-                        fill: true,
-                    }, {
-                        data: [65, 59, 90, 81, 56, 55],
-                        label: 'Deaths',
-                        borderColor: 'rgb(233, 30, 99)',
-                        fill: true,
-                    }],
-                    backgroundColor: [
-                        "rgba(255, 134,159,0.4)",
-                        "rgba(98,  182, 239,0.4)",
-                        "rgba(255, 218, 128,0.4)",
-                        "rgba(113, 205, 205,0.4)",
-                        "rgba(170, 128, 252,0.4)",
-                        "rgba(255, 177, 101,0.4)"
-                    ],
-                    borderColor: [
-                        "rgba(255, 134, 159, 1)",
-                        "rgba(98,  182, 239, 1)",
-                        "rgba(255, 218, 128, 1)",
-                        "rgba(113, 205, 205, 1)",
-                        "rgba(170, 128, 252, 1)",
-                        "rgba(255, 177, 101, 1)"
-                    ]
-                }}
-            />
+            {
+                loading ?
+                'Loading ...' :
+                <Bar
+                    data={{
+                        labels: dailyDayCount,
+                        datasets: [{
+                            data: dailyDayName,
+                            label: 'Yearly Report',
+                            backgroundColor: 'rgba(84, 3, 3, 0.2)',
+                            borderColor: 'rgba(84, 3, 3, 1)',
+                            borderWidth: 1,
+                            hoverBackgroundColor: 'rgba(84, 3, 3, 0.4)',
+                            hoverBorderColor: 'rgba(84, 3, 3, 1)',
+                            fill: true,
+                        }],
+                    }}
+                />
+            }
+            
         </div>
     );
 }
