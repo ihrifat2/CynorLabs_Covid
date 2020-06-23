@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router";
 import { ReactFormGenerator } from 'react-form-builder2';
 import { Container, Row, Col, Card, CardBody } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 const answers = {};
 
@@ -21,11 +22,8 @@ function Form(props) {
                 })
         }
         getData()
-    }, [])
+    }, [id])
 
-    console.log(data)
-
-    const items = [];
     return (
         <Container>
             <Row xs="1">
@@ -35,12 +33,18 @@ function Form(props) {
                             {
                                 loading ?
                                 "Loading" :
-                                <ReactFormGenerator
-                                    download_path=""
-                                    back_action="/manager"
-                                    back_name="Back"
-                                    answer_data={answers}
-                                    data={data} />
+                                <div>
+                                    {/* <Link to={{ pathname: `/edit/${id}` }}>Edit</Link> */}
+                                    <ReactFormGenerator
+                                        download_path=""
+                                        back_action="/manager"
+                                        back_name="Back"
+                                        action_name="Edit"
+                                        form_action={`/edit/${id}`}
+                                        form_method="GET"
+                                        answer_data={answers}
+                                        data={data} />
+                                </div>
                             }
                         </CardBody>
                     </Card>
