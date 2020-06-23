@@ -20,6 +20,27 @@ export function get(url) {
         headers,
     }).then(response => {
         const r = response.json();
+        console.log(r)
         return r;
     });
+}
+
+export function getFormData(url) {
+    return fetch(url, {
+        method: 'GET',
+        headers,
+    })
+    .then(res => res.json())
+    .then(res => {
+        const r = JSON.parse(res.post).task_data
+        return r;
+    });
+}
+
+export function put(url, data) {
+    return fetch(url, {
+        method: 'PUT',
+        headers,
+        body: JSON.stringify(data),
+    }).then(response => response);
 }
