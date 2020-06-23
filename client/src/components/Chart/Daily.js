@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Line } from "react-chartjs-2";
+import React, { useState, useEffect } from 'react'
+import { Line } from "react-chartjs-2"
 import moment from 'moment'
 
 function Daily(props) {
@@ -16,78 +16,44 @@ function Daily(props) {
                     setUserData(res)
                 })
         }
-        getData();
+        getData()
     }, [])
-    const date = moment().format();
-    // console.log(date)
-    // console.log(date.format('dddd'))
-    // const todayReport = userData.filter(
-    //     (ud) = !moment(ud.date).isBefore(moment(), "day")
-    // ).length;
+    
+    const totalDayName = []
+    const dailyNameReport = userData.filter(function (post) {
+        totalDayName.push(moment(post.date).format('DD-MM-YYYY'))
+    }).length
 
-    const dailyDayName = [];
-    const dailyDayCount = [];
-    const i = 0;
-    const dayCount = '';
-    const dailyReport = userData.filter(function (post) {
-        // console.log()
-        // moment(post.date).isBefore(moment(), "day")
-        dailyDayName.push(moment(post.date).format('dddd'));
-        // dailyDayCount.push(moment(post.date).format('dddd'));
-        var a = moment(post.date).subtract(1, 'day');
-        var b = moment(post.date).add(1, 'day');
-        
-        // dailyDayCount.push(moment.max(a, b));
-        dailyDayCount.push(moment(post.date).add(1, 'd'));
-        // console.log()
-    }).length;
+    var sliceDupDay = [];
+    totalDayName.forEach(x=>{
+        sliceDupDay[x]=(sliceDupDay[x] || 0)+1 
+    });
 
-    // const dateArray = [];
-    // userData.map((post) => {
-    //     dateArray.push(post.date);
-    // });
-
-    // console.log(dailyDayName)
-    console.log(dailyDayCount)
-    // console.log(dailyReport)
+    const dailyDayCount = Object.keys(sliceDupDay)
+    const dailyDayName = Object.values(sliceDupDay)
 
     return (
         <div>
             <h1>Daily</h1>
-            <Line
-                data={{
-                    labels: [65, 59, 90, 81, 56, 55],
-                    datasets: [{
-                        data: [60, 54, 79, 68, 69, 75],
-                        label: 'Infected',
-                        borderColor: 'rgb(116, 28, 176, 1)',
-                        fill: true,
-                    }, {
-                        data: [65, 59, 90, 81, 56, 55],
-                        label: 'Deaths',
-                        borderColor: 'rgb(233, 30, 99)',
-                        fill: true,
-                    }],
-                    backgroundColor: [
-                        "rgba(255, 134,159,0.4)",
-                        "rgba(98,  182, 239,0.4)",
-                        "rgba(255, 218, 128,0.4)",
-                        "rgba(113, 205, 205,0.4)",
-                        "rgba(170, 128, 252,0.4)",
-                        "rgba(255, 177, 101,0.4)"
-                    ],
-                    borderColor: [
-                        "rgba(255, 134, 159, 1)",
-                        "rgba(98,  182, 239, 1)",
-                        "rgba(255, 218, 128, 1)",
-                        "rgba(113, 205, 205, 1)",
-                        "rgba(170, 128, 252, 1)",
-                        "rgba(255, 177, 101, 1)"
-                    ]
-                }}
-            />
+            {
+                loading ?
+                'Loading ...' :
+                <Line
+                    data={{
+                        labels: dailyDayCount,
+                        datasets: [{
+                            data: dailyDayName,
+                            label: 'Daily Report',
+                            borderColor: 'rgb(95, 106, 244)',
+                            hoverBackgroundColor: 'rgba(95, 106, 244, 0.4)',
+                            hoverBorderColor: 'rgba(95, 106, 244, 1)',
+                            fill: true,
+                        }],
+                    }}
+                />
+            }
         </div>
-    );
+    )
 }
 
-export default Daily;
+export default Daily
