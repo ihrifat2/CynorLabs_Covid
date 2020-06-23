@@ -21,6 +21,9 @@ const AppNavbar = () => {
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
                         <NavItem>
+                            <NavLink href="/dashboard">Dashboard</NavLink>
+                        </NavItem>
+                        <NavItem>
                             <NavLink href="/">Doctor</NavLink>
                         </NavItem>
                         <NavItem>
