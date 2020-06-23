@@ -22,6 +22,15 @@ router.post('/', (req, res) => {
     newPost.save().then(post => res.json(post))
 })
 
+router.put('/:id', (req, res) => {
+    Post.findById(req.params.id)
+    .then(post => {
+        post.post = JSON.stringify(req.body)
+        post.save().then(() => res.json({success: true}))
+    })
+    .catch(err => res.status(404).json({success: false}))
+})
+
 router.delete('/:id', (req, res) => {
     Post.findById(req.params.id)
     .then(post => post.remove().then(() => res.json({success: true})))
