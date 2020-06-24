@@ -24,13 +24,13 @@ function Yearly(props) {
         totalDayName.push(moment(post.date).format('YYYY'))
     }).length
 
-    var sliceDupDay = [];
+    var sliceDupYear = [];
     totalDayName.forEach(x=>{
-        sliceDupDay[x]=(sliceDupDay[x] || 0)+1 
+        sliceDupYear[x]=(sliceDupYear[x] || 0)+1 
     });
 
-    const dailyDayCount = Object.keys(sliceDupDay)
-    const dailyDayName = Object.values(sliceDupDay)
+    const dailyDayCount = Object.keys(sliceDupYear)
+    const dailyDayName = Object.values(sliceDupYear)
     return (
         <div>
             <h1>Yearly</h1>
