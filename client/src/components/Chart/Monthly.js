@@ -24,13 +24,13 @@ function Monthly(props) {
         totalDayName.push(moment(post.date).format('MMMM'))
     }).length
 
-    var sliceDupDay = [];
+    var sliceDupMonth = [];
     totalDayName.forEach(x=>{
-        sliceDupDay[x]=(sliceDupDay[x] || 0)+1 
+        sliceDupMonth[x]=(sliceDupMonth[x] || 0)+1 
     });
 
-    const dailyDayCount = Object.keys(sliceDupDay)
-    const dailyDayName = Object.values(sliceDupDay)
+    const dailyDayCount = Object.keys(sliceDupMonth)
+    const dailyDayName = Object.values(sliceDupMonth)
     return (
         <div>
             <h1>Monthly</h1>
