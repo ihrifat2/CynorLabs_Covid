@@ -19,18 +19,19 @@ function Yearly(props) {
         getData()
     }, [])
     
-    const totalDayName = []
-    const dailyNameReport = userData.filter(function (post) {
-        totalDayName.push(moment(post.date).format('YYYY'))
+    const totalYearName = []
+    const yearlyReport = userData.filter(function (post) {
+        totalYearName.push(moment(post.date).format('YYYY'))
+        return 0;
     }).length
 
     var sliceDupYear = [];
-    totalDayName.forEach(x=>{
+    totalYearName.forEach(x=>{
         sliceDupYear[x]=(sliceDupYear[x] || 0)+1 
     });
 
-    const dailyDayCount = Object.keys(sliceDupYear)
-    const dailyDayName = Object.values(sliceDupYear)
+    const yearlyDayCount = Object.keys(sliceDupYear)
+    const yearlyDayName = Object.values(sliceDupYear)
     return (
         <div>
             <h1>Yearly</h1>
@@ -39,9 +40,9 @@ function Yearly(props) {
                 'Loading ...' :
                 <Bar
                     data={{
-                        labels: dailyDayCount,
+                        labels: yearlyDayCount,
                         datasets: [{
-                            data: dailyDayName,
+                            data: yearlyDayName,
                             label: 'Yearly Report',
                             backgroundColor: 'rgba(84, 3, 3, 0.2)',
                             borderColor: 'rgba(84, 3, 3, 1)',
