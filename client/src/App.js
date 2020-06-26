@@ -13,6 +13,7 @@ function App() {
     return (
         <Router>
             <div className="App">
+                <div id="google_translate_element"></div>
                 <AppNavbar />
                 <div>
                     <Switch>
