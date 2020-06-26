@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Form from './components/Form'
 import Dashboard from './components/Dashboard';
 import ModifyForm from './components/ModifyForm';
+import './translator.css'
 
 function App() {
     return (
@@ -15,11 +16,12 @@ function App() {
                 <AppNavbar />
                 <div>
                     <Switch>
-                        <Route exact path='/' component={Doctor} />
+                        <Route exact path='/doctor' component={Doctor} />
                         <Route exact path='/manager' component={Manager} />
                         <Route exact path='/form/:id' component={Form} />
                         <Route exact path='/dashboard' component={Dashboard} />
                         <Route exact path='/edit/:id' component={ModifyForm} />
+                        <Route exact path='/' component={Dashboard} />
                     </Switch>
                 </div>
             </div>
