@@ -19,18 +19,19 @@ function Monthly(props) {
         getData()
     }, [])
     
-    const totalDayName = []
-    const dailyNameReport = userData.filter(function (post) {
-        totalDayName.push(moment(post.date).format('MMMM'))
+    const totalMonthName = []
+    const monthlyReport = userData.filter(function (post) {
+        totalMonthName.push(moment(post.date).format('MMMM'))
+        return 0;
     }).length
 
     var sliceDupMonth = [];
-    totalDayName.forEach(x=>{
+    totalMonthName.forEach(x=>{
         sliceDupMonth[x]=(sliceDupMonth[x] || 0)+1 
     });
 
-    const dailyDayCount = Object.keys(sliceDupMonth)
-    const dailyDayName = Object.values(sliceDupMonth)
+    const monthlyDayCount = Object.keys(sliceDupMonth)
+    const monthlyDayName = Object.values(sliceDupMonth)
     return (
         <div>
             <h1>Monthly</h1>
@@ -39,9 +40,9 @@ function Monthly(props) {
                 'Loading ...' :
                 <Doughnut
                     data={{
-                        labels: dailyDayCount,
+                        labels: monthlyDayCount,
                         datasets: [{
-                            data: dailyDayName,
+                            data: monthlyDayName,
                             label: 'Monthly Report',
                             borderColor: 'rgb(144, 153, 5)',
                             hoverBackgroundColor: 'rgba(144, 153, 5, 0.4)',
