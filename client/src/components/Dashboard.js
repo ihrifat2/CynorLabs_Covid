@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import Daily from './Chart/Daily';
 import Monthly from './Chart/Monthly';
 import Yearly from './Chart/Yearly';
+import MongoDBChart from './MongoDBChart';
 
 function Dashboard(props) {
 
@@ -37,6 +38,12 @@ function Dashboard(props) {
                                     onClick={() => { toggle('3'); }}
                                 > Yearly </NavLink>
                             </NavItem>
+                            <NavItem>
+                                <NavLink
+                                    className={classnames({ active: activeTab === '4' })}
+                                    onClick={() => { toggle('4'); }}
+                                > TEST </NavLink>
+                            </NavItem>
                         </Nav>
                         <TabContent activeTab={activeTab} className="mt-4">
                             <TabPane tabId="1">
@@ -57,6 +64,13 @@ function Dashboard(props) {
                                 <Row>
                                     <Col>
                                         <Yearly />
+                                    </Col>
+                                </Row>
+                            </TabPane>
+                            <TabPane tabId="4">
+                                <Row>
+                                    <Col>
+                                        <MongoDBChart />
                                     </Col>
                                 </Row>
                             </TabPane>
