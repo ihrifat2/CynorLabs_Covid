@@ -20,8 +20,9 @@ function Daily(props) {
     }, [])
     
     const totalDayName = []
-    const dailyNameReport = userData.filter(function (post) {
+    const dailyReport = userData.filter(function (post) {
         totalDayName.push(moment(post.date).format('DD-MM-YYYY'))
+        return 0;
     }).length
 
     var sliceDupDay = [];
