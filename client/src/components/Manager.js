@@ -26,7 +26,7 @@ function Manager(props) {
                     <h2>List of Submited form</h2>
                     {
                         loading ? 
-                        'Loading...' :
+                        'Loading ...' :
                         <Table>
                             <thead>
                                 <tr>
