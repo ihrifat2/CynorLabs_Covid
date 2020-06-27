@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
 import classnames from 'classnames';
-import Daily from './Chart/Daily';
-import Monthly from './Chart/Monthly';
-import Yearly from './Chart/Yearly';
-import MongoDBChart from './MongoDBChart';
+import Daily from './MongoChart/Daily';
+import Monthly from './MongoChart/Monthly';
+import Yearly from './MongoChart/Yearly';
 
 function Dashboard(props) {
 
@@ -38,12 +37,6 @@ function Dashboard(props) {
                                     onClick={() => { toggle('3'); }}
                                 > Yearly </NavLink>
                             </NavItem>
-                            <NavItem>
-                                <NavLink
-                                    className={classnames({ active: activeTab === '4' })}
-                                    onClick={() => { toggle('4'); }}
-                                > TEST </NavLink>
-                            </NavItem>
                         </Nav>
                         <TabContent activeTab={activeTab} className="mt-4">
                             <TabPane tabId="1">
@@ -64,13 +57,6 @@ function Dashboard(props) {
                                 <Row>
                                     <Col>
                                         <Yearly />
-                                    </Col>
-                                </Row>
-                            </TabPane>
-                            <TabPane tabId="4">
-                                <Row>
-                                    <Col>
-                                        <MongoDBChart />
                                     </Col>
                                 </Row>
                             </TabPane>
