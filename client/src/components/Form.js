@@ -32,7 +32,7 @@ function Form(props) {
                         <CardBody>
                             {
                                 loading ?
-                                "Loading" :
+                                "Loading ..." :
                                 <div>
                                     {/* <Link to={{ pathname: `/edit/${id}` }}>Edit</Link> */}
                                     <ReactFormGenerator
