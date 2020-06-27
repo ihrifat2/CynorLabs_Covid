@@ -20,6 +20,13 @@ function PostForm(props) {
             content: 'Remplir le champs svp ...'
         },
         {
+            key: 'Label',
+            name: 'Label',
+            icon: 'fas fa-font',
+            static: true,
+            content: 'Placeholder Text...'
+        },
+        {
             key: 'Paragraph',
             name: 'Paragraph',
             static: true,
@@ -27,13 +34,11 @@ function PostForm(props) {
             content: 'Remplir le champs svp ...'
         },
         {
-            key: 'TextInput',
-            canHaveAnswer: true,
-            canHaveAlternateForm: false,
-            name: 'Text Input',
-            label: 'Placeholder Label',
-            icon: 'fas fa-font',
-            field_name: 'text_input_',
+            key: 'LineBreak',
+            name: 'LineBreak',
+            static: true,
+            icon: 'fas fa-arrows-alt-h',
+            content: 'Line Break'
         },
         {
             key: 'Dropdown',
@@ -43,6 +48,23 @@ function PostForm(props) {
             label: 'Placeholder Label',
             field_name: 'dropdown_',
             options: [],
+        },
+        {
+            key: 'Tags',
+            name: 'Tags',
+            static: true,
+            icon: 'fas fa-tags',
+            content: 'Placeholder Label',
+            options: [],
+        },
+        {
+            key: 'TextInput',
+            canHaveAnswer: true,
+            canHaveAlternateForm: false,
+            name: 'Text Input',
+            label: 'Placeholder Label',
+            icon: 'fas fa-font',
+            field_name: 'text_input_',
         },
         {
             key: 'RadioButtons',
