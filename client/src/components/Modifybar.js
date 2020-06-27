@@ -58,7 +58,7 @@ export default class Modifybar extends React.Component {
                                 this.state.previewVisible &&
                                 <div className={modalClass} role="dialog">
                                     <div className="modal-dialog" role="document">
-                                        <div className="modal-content"  style={{ padding: '30px' }}>
+                                        <div className="modal-content"  style={{ padding: '30px', maxHeight: 'calc(100vh - 210px)', overflowY: 'auto' }}>
                                             <Row xs="1">
                                                 <Col className="mt-4">
                                                     <ReactFormGenerator
