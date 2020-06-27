@@ -20,8 +20,8 @@ function App() {
                         <Route exact path='/doctor' component={Doctor} />
                         <Route exact path='/manager' component={Manager} />
                         <Route exact path='/form/:id' component={Form} />
-                        <Route exact path='/dashboard' component={Dashboard} />
                         <Route exact path='/edit/:id' component={ModifyForm} />
+                        <Route exact path='/dashboard' component={Dashboard} />
                         <Route exact path='/' component={Dashboard} />
                     </Switch>
                 </div>
