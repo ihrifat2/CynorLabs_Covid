@@ -2,7 +2,7 @@ import React from 'react';
 import { ReactFormGenerator, ElementStore } from 'react-form-builder2';
 import { Container, Row, Col } from 'reactstrap';
 import { post } from './requests';
-import '../custome.css'
+import '../customStyle.css'
 
 export default class Headerbar extends React.Component {
     constructor(props) {
