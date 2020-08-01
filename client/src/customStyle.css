@@ -15,11 +15,16 @@
 }
 .btn-toolbar .btn-cancel:hover {
     color: #fff;
-    background-color: #9e2531
-    ;
+    background-color: #9e2531;
 }
 .react-form-builder .react-form-builder-toolbar ul li {
-    border: 1px solid #ddd!important;
+    border: 1px solid #bbb!important;
     border-radius: 5px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.19);
+}
+.react-form-builder .react-form-builder-toolbar{
+    margin-top: 0px!important;
+}
+.form-place-holder {
+    border: 2px solid #bbb!important;
 }
