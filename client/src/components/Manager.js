@@ -13,6 +13,7 @@ function Manager(props) {
                 .then(res => res.json())
                 .then(res => {
                     setloading(false)
+                    console.log(res)
                     setUserData(res)
                 })
         }

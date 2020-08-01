@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ReactFormBuilder } from 'react-form-builder2';
 import Headerbar from './headerbar';
 import * as variables from './variables';
+import '../customStyle.css'
 
 function PostForm(props) {
 

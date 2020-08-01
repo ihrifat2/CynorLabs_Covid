@@ -2,9 +2,24 @@
     color: #fff;
     background-color: #28a745;
     border-color: #28a745;
+    margin-right: 10px;
+}
+.btn-toolbar .btn-agree:hover {
+    color: #fff;
+    background-color: #297d3c;
 }
 .btn-toolbar .btn-cancel {
     color: #fff;
     background-color: #dc3545;
     border-color: #dc3545;
+}
+.btn-toolbar .btn-cancel:hover {
+    color: #fff;
+    background-color: #9e2531
+    ;
+}
+.react-form-builder .react-form-builder-toolbar ul li {
+    border: 1px solid #ddd!important;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.19);
 }
