@@ -51,7 +51,7 @@ export default class Headerbar extends React.Component {
         return (
             <Container>
                 <Row xs="1">
-                    <Col className="mt-4">
+                    <Col>
                         <div className="clearfix" style={{ margin: '10px', width: '70%' }}>
                             {/* <h4 className="float-left">Preview</h4> */}
                             <button className="btn btn-info float-right" style={{ marginRight: '10px' }} onClick={this.showPreview.bind(this)}>Preview Form</button>
